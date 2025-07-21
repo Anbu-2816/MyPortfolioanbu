@@ -1,0 +1,118 @@
+.projects-section {
+  background: linear-gradient(to right, #0a0a0a, #121212, #1a1a1a);
+  color: #ffffff;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.section-heading {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #00e6e6;
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
+}
+
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  width: 100%; /* Ensure it stretches fully */
+  max-width: 100%; /* Prevent constraint */
+}
+
+
+.project-card {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2rem;
+  width: 100%; /* changed from 105% to 100% */
+  max-width: 1000px; /* increased max width */
+  text-align: left;
+  box-shadow: 0 8px 30px rgba(0, 255, 255, 0.05);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+
+.project-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  animation: glow 1.5s ease-in-out infinite;
+}
+
+.project-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  background-color: #0a0a0a; /* dark circular background */
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1); /* subtle glow */
+  filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.2));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.project-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 18px rgba(0, 255, 255, 0.5));
+}
+
+
+.project-title {
+  font-size: 2rem;
+  color: #ff66b2;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(255, 102, 178, 0.3);
+}
+
+.project-period,
+.project-org {
+  font-size: 1rem;
+  color: #aaaaaa;
+  margin-bottom: 0.4rem;
+}
+
+.project-description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #dddddd;
+  margin-top: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .project-card {
+    padding: 1.5rem;
+  }
+
+  .project-title {
+    font-size: 1.6rem;
+  }
+
+  .section-heading {
+    font-size: 2.2rem;
+  }
+}
+
+/* NEON GLOW EFFECT */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+  }
+}

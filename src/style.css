@@ -1,0 +1,481 @@
+:root {
+  --primary-bg: #0e0e0e;
+  --card-bg: #1a1a1a;
+  --secondary: #ff00dd;
+  --text-main: #f5f5f5;
+  --text-muted: #aaa;
+  --accent-glow: rgba(255, 77, 148, 0.3);
+  --glass: rgba(255, 255, 255, 0.05);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--primary-bg);
+  color: var(--text-main);
+  scroll-behavior: smooth;
+  line-height: 1.7;
+}
+
+/* ✅ Allows scroll, but hides the scrollbar */
+body {
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+
+
+/* Smooth section transition */
+.section {
+  padding: 5rem 2rem;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.section::after {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(var(--accent-glow), transparent 60%);
+  z-index: -1;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  background: var(--card-bg);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 8px rgba(255, 77, 148, 0.2);
+  border-bottom: 1px solid #222;
+}
+
+
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--secondary);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: var(--secondary);
+  bottom: -3px;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--secondary);
+}
+
+.nav-links a:hover::before {
+  width: 100%;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 8rem 2rem;
+  background: linear-gradient(to right, #111, #0e0e0e);
+}
+
+.hero h2 {
+  font-size: 2.8rem;
+  color: var(--text-main);
+}
+
+.hero .highlight {
+  color: var(--secondary);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.btn {
+  margin-top: 2rem;
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+  background: var(--secondary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 10px var(--secondary);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #ff00ea;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--secondary);
+}
+
+/* Skill Badges */
+.skills-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding: 1rem;
+  animation: fadeUp 1.2s ease-in-out;
+}
+
+/* Each skill badge */
+.skill {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 1rem 1.8rem;
+  color: #f1f1f1;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.6px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: floatUp 1s ease-in-out both;
+}
+
+/* Pulse glow effect */
+.skill:hover {
+  background: rgba(0, 191, 255, 0.2);
+  color: #ffffff;
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 0 20px #ff00dd, 0 0 40px #ff00dd;
+}
+
+/* Light trail animation */
+.skill::after {
+  content: '';
+  position: absolute;
+  width: 120%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent #ff00dd, transparent);
+  top: 0;
+  left: -10%;
+  transform: translateX(-100%);
+  opacity: 0.8;
+}
+
+.skill:hover::after {
+  animation: moveTrail 1.5s infinite;
+}
+
+.skills-category {
+  margin-top: 2rem;
+}
+
+.skills-title {
+  font-size: 1.3rem;
+  color: var(--text-main);
+  margin-bottom: 0.8rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.section-subtext {
+  text-align: center;
+  font-size: 1.05rem;
+  color: #777;
+  margin-bottom: 1.5rem;
+}
+
+
+/* Floating card animation */
+@keyframes floatUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Light trail movement */
+@keyframes moveTrail {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Entry fade */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Project Cards */
+.project-card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  text-align: left;
+  border: 1px solid #222;
+  box-shadow: 0 4px 20px rgba(255, 77, 148, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px var(--accent-glow);
+}
+
+.project-card a {
+  color: var(--secondary);
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+/* Contact */
+#contact p {
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+/* Footer */
+.footer {
+  padding: 2rem;
+  background: #111;
+  color: var(--text-muted);
+  text-align: center;
+  border-top: 1px solid #222;
+  font-size: 0.95rem;
+}
+
+
+
+
+
+/* --------------- GENERAL ANIMATIONS --------------- */
+
+/* Fade-in */
+.fade-in {
+  animation: fadeIn 1s ease-out both;
+}
+
+/* Slide-in from Left */
+.slide-left {
+  animation: slideLeft 1s ease-out both;
+}
+
+/* Slide-in from Right */
+.slide-right {
+  animation: slideRight 1s ease-out both;
+}
+
+/* Scale In */
+.scale-in {
+  animation: scaleIn 1s ease-out both;
+}
+
+/* Glow Pulse (Loop) */
+.glow-pulse {
+  animation: glowPulse 2s infinite ease-in-out;
+}
+
+/* Typewriter effect (for Hero title) */
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--secondary);
+  animation: typing 3s steps(30, end), blink-caret 0.8s step-end infinite;
+}
+
+
+/* KEYFRAMES */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--secondary);
+  }
+  50% {
+    box-shadow: 0 0 25px var(--secondary), 0 0 40px var(--secondary);
+  }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  0%, 100% { border-color: transparent }
+  50% { border-color: var(--secondary) }
+}
+
+
+
+.highlight {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary); /* or pick a bold color like #ff4d4d */
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  animation: slideInDown 1s ease-in-out;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 4px;
+  background-color: var(--secondary); /* or any accent color */
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  border-radius: 2px;
+}
+
+/* Entry animation */
+@keyframes slideInDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+
+.section-heading {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--primary); /* You can define your brand color here */
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+/* Underline effect */
+.section-heading::after {
+  content: '';
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: var(--secondary); /* Accent color */
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
